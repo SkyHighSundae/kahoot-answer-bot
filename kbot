@@ -19,7 +19,7 @@ def nameOrID():
 def checkID(qID):
 	res = re.search(r"(([a-zA-Z0-9]){8}(-([a-zA-Z0-9]){4}){3}-([a-zA-Z0-9]){12})", qID)
 	if not res:
-		print('Invalid UUID. It must take the form x8-x4-x4-x4-x12, where x8 means 8 alphanumeric characters')
+		print('Error: Invalid UUID. It must take the form x8-x4-x4-x4-x12, where x8 means 8 alphanumeric characters.')
 		exit()
 	return res.group(1)
 
@@ -50,11 +50,11 @@ if __name__ == "__main__":
 
 	try:
 		if debug:
-			print("In debug mode: output will go brrrrrrrrrrrr")
+			print("Debug mode active. Use at your own risk")
 		else:
 			sys.tracebacklimit = 0
 		if searchOnly:
-			print("In searchOnly mode: kbot will not join a Kahoot")
+			print("Error: searchOnly active. Cannot join kahoot")
 			if quizID:
 				user = klib.Kahoot(quizID=checkID(quizID), DEBUG=debug)
 			elif quizName:
